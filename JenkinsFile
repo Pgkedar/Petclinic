@@ -10,6 +10,7 @@ pipeline {
             }
         }
         stage ("testing stage"){
+          agent { label "maven_node" }
             steps {
                 withMaven(maven : 'Maven_Home'){
                 sh 'mvn test'
@@ -18,6 +19,7 @@ pipeline {
             
         }
         stage ("deploy stage"){
+          agent { label "maven_node" }
             steps {
                 withMaven(maven : 'Maven_Home'){
                 sh 'mvn deploy'
